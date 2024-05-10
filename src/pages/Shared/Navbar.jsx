@@ -1,14 +1,27 @@
 import { NavLink, Navigate } from "react-router-dom";
 import "./shared.css"
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
 
+    const {user, logOut} = useContext(AuthContext);
+    
+    const signOutUser = () => {
+        logOut()
+        .then(()=>{})
+        .catch(()=>{})
+    }
+    console.log(user)
+
     const navLinks = <>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Home</NavLink></li>
-    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/all-spots">Available Foods</NavLink></li>
-    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/add-spot">Add Food</NavLink></li>
-    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/my-spots">Manage My Foods</NavLink></li>
-    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/register">My Food Request</NavLink></li>
+    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Available Foods</NavLink></li>
+    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Add Food</NavLink></li>
+    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Manage My Foods</NavLink></li>
+    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">My Food Request</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/register">SignUp</NavLink></li>
     
 
@@ -53,7 +66,22 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-[#cb946a] button-styles text-white px-3 mr-2 lg:mr-0 text-sm md:text-base">Login</a>
+        {user ? <>
+                    <div className="dropdown dropdown-end">
+                        <div className="tooltip" data-tip={user.displayName}>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img referrerPolicy="no-referrer" alt="User" src={user.photoURL? user.photoURL : <FaRegUserCircle />} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onClick={signOutUser} className="btn lg:ml-4 mr-2 p-2 bg-[#cb946a] button-styles">Log Out</button>
+                </> :
+                <div>
+                    <Link to='/login' className="btn ml-4 mr-2 p-2 bg-[#cb946a] button-styles">Log In</Link>
+                </div>}
+          {/* <a className="btn bg-[#cb946a] button-styles text-white px-3 mr-2 lg:mr-0 text-sm md:text-base">Login</a> */}
         </div>
       </div>
     </div>

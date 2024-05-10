@@ -21,3 +21,8 @@
 input{
   background-color: #F5EFD7 !important;
 }
+
+.label-text{
+  font-size: medium;
+  color: #7b3f11;
+}
