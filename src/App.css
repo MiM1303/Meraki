@@ -1,8 +1,23 @@
 .navbar a:hover{
   background-color: #f6cd6f;
+  color: #4c2100b6 !important;
   
 }
 .active{
   background-color: #cb946a !important;
   color: white !important;
+}
+
+.button-styles{
+  background-color: #cb946a !important;
+  color: white;
+}
+
+.button-styles:hover{
+  background-color: #aa6d3f !important;
+  color: white !important;
+}
+
+input{
+  background-color: #F5EFD7 !important;
 }
