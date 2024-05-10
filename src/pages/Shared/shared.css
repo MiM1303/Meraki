@@ -1,0 +1,8 @@
+.navbar a:hover{
+    background-color: #ECF39E;
+    color: #31572C;
+  }
+  .active{
+    background-color: #ECF39E !important;
+    color: #31572C !important;
+  }
