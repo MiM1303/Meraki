@@ -76,7 +76,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                    <button onClick={signOutUser} className="btn lg:ml-4 mr-2 p-2 bg-[#cb946a] button-styles">Log Out</button>
+                    <button onClick={signOutUser} className="btn lg:ml-4 mr-2 p-2 bg-[#acb946] button-styles">Log Out</button>
                 </> :
                 <div>
                     <Link to='/login' className="btn ml-4 mr-2 p-2 bg-[#cb946a] button-styles">Log In</Link>
