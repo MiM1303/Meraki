@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const navLinks = <>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Home</NavLink></li>
-    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Available Foods</NavLink></li>
+    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/available-foods">Available Foods</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/add-food">Add Food</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Manage My Foods</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">My Food Request</NavLink></li>
