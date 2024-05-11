@@ -19,7 +19,7 @@ const Navbar = () => {
     const navLinks = <>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Home</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Available Foods</NavLink></li>
-    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Add Food</NavLink></li>
+    <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/add-food">Add Food</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">Manage My Foods</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/">My Food Request</NavLink></li>
     <li className="font-semibold font-4xl text-[#4D433A]"><NavLink to="/register">SignUp</NavLink></li>
@@ -28,8 +28,8 @@ const Navbar = () => {
 </>
 
   return (
-    <div className="">
-      <div className="navbar bg-[#F5EFD7] border border-transparent rounded-2xl md:rounded-3xl p-0 md:px-4 lg:px-10">
+    <div className="font-teachers">
+      <div className="navbar bg-[#F5EFD7] border border-transparent rounded-2xl md:rounded-3xl lg:py-1 p-0 md:px-4 lg:px-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost p-1 ml-1 lg:hidden">

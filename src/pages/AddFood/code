@@ -1,0 +1,146 @@
+import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form"
+import Swal from "sweetalert2";
+import "../AddFood/AddFood.css"
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+
+
+const AddFood = () => {
+
+    
+    // console.log(user);
+
+    // Hook Form
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
+
+
+      const {user} = useContext(AuthContext);
+
+
+      const onSubmit = () =>{
+        console.log("form submitted")
+      }
+
+    return (
+        <div>
+            <Helmet>
+                <title>Meraki | Add Food</title>
+            </Helmet>
+
+
+            {/* ADD FOOD FORM */}
+            <h2 className="text-center lg:text-4xl text-2xl mt-16 font-semibold text-[#442537]">Add A Tourist Spot!</h2>
+            <p className="text-center mt-5 lg:text-xl">Know about a tourist spot you think others would love? Share with us by giving us the details below!</p>
+            
+            <form onSubmit={handleSubmit(onSubmit)} className="text-[#738e36] mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 card-body text-2xl">
+
+                {/* Image */}
+                <div className="">
+                    <div className="label">
+                        <span className="label-text text-lg md:text-xl">Image:</span>
+                    </div>
+                    <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                        Photo URL:
+                        <input type="url" className="grow p-1" placeholder="URL for the image of the spot" {...register("photo", { required: true })}/>
+                    </label>
+                </div>
+
+                {/* row-1 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Location:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            Food Name:
+                            <input type="text" className="grow p-1" placeholder="Name of Food" {...register("name", { required: true })}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Average Cost:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            Quantity:
+                            <input type="number" className="grow p-1" placeholder="Quantity of food" {...register("quantity", { required: true })}/>
+                        </label>
+                    </div>
+                </div>
+                
+                {/* row-3 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Travel Season:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            Location:
+                            <input type="text" className="grow p-1" placeholder="Pickup Location" {...register("location", { required: true })}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Travel Time:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            Expiry Date:
+                            <input type="date" className="grow p-1" placeholder="Expiry date of the food" {...register("date", { required: true })}/>
+                        </label>
+                    </div>
+                </div>
+
+                {/* Additional Notes */}
+                <div className="">
+                    <div className="label">
+                        <span className="label-text text-lg md:text-xl">Image:</span>
+                    </div>
+                    <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                        Additional Notes:
+                        <input type="text" className="grow p-1" defaultValue={"N/A"} placeholder="Additional notes about the food?" {...register("notes", { required: false })}/>
+                    </label>
+                </div>
+
+                {/* row-4 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                      <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Short Description:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            Added By:
+                            <input type="text" className="grow p-1" disabled placeholder="Email of adder" defaultValue={user.email} {...register("userEmail", { required: true })}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Short Description:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            User Image:
+                            <input type="text" className="grow p-1" disabled placeholder="Photo of adder" defaultValue={user.photoURL} {...register("userPhoto", { required: true })}/>
+                        </label>
+                    </div>
+                </div>
+
+                <div className="form-control mt-6">
+                    <button className="btn bg-[#99D98C] hover:bg-[#B5E48C] text-[#2d6a4f] text-base font-bold lg:text-xl  pb-10 pt-4 flex items-center justify-center">
+                        <input type="submit" value="Submit" />
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+};
+
+export default AddFood;

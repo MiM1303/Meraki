@@ -4,6 +4,8 @@ import Error404 from "../pages/Error/Error404"
 import Home from "../pages/Home/Home"
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
+import AddFood from "../pages/AddFood/AddFood";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/add-food',
+                element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
             },
             
         ]

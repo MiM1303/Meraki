@@ -1,0 +1,16 @@
+.input-bordered{
+    border-color: #9c6637;
+    border-width: 1.2px;
+    color: #9c6637;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.label-text{
+    color: #9c6637;
+}
+
+input{
+    border-radius: 10px;
+}
+

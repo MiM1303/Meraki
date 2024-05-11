@@ -8,6 +8,7 @@ const Home = () => {
                 <title>Meraki | Home</title>
             </Helmet>
             <Banner></Banner>
+            
         </div>
     );
 };
