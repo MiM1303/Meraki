@@ -2,7 +2,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
-  const { _id, photo, name, userName, userPhoto, date, quantity, location, notes } = food;
+  const { _id, photo, name, userName, userPhoto, date, quantity, location, notes, requestDate } = food;
   return (
     <div>
       <div className=" card bg-base-100 shadow-xl">
@@ -19,7 +19,7 @@ const FoodCard = ({ food }) => {
 
         <div className="card-body lg:px-8 lg:py-8 bg-[#fce9da] text-lg">
             <div className="flex flex-row gap-6 mb-6 items-center">
-                <img src={userPhoto} className="rounded-full w-16 h-16   lg:w-20 lg:h-20 shadow-lg" alt="" />
+                {requestDate ? <p className="font-semibold text-base md:text-lg lg:text-xl">Donated By:</p> : <img src={userPhoto} className="rounded-full w-16 h-16   lg:w-20 lg:h-20 shadow-lg" alt="" />}
                 <div>
                     <h2 className="text-lg lg:text-xl card-title">{userName}</h2>
                     <p className="text-base lg:text-lg">{location}</p>
@@ -27,6 +27,7 @@ const FoodCard = ({ food }) => {
             </div>
             <p className="text-base md:text-lg lg:text-xl "><span className="font-semibold">Expiry Date:</span> {date}</p>
             <p className="text-base md:text-lg lg:text-xl "><span className="font-semibold">Notes:</span> {notes}</p>
+            {requestDate? <p className="text-base md:text-lg lg:text-xl "><span className="font-semibold">Requested Date:</span> {date}</p>:<p></p>}
           <div className="card-actions justify-end mt-8">
             <Link to={`/food/${_id}`}>
               <button className="btn bg-[#cb946a] text-sm lg:text-base button-styles">View Details</button>

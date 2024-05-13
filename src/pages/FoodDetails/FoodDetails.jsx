@@ -3,10 +3,13 @@ import { IoLocationSharp } from "react-icons/io5";
 import { useForm } from "react-hook-form"
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const FoodDetails = () => {
   const food = useLoaderData();
   const {_id, name, photo, quantity, date, userName, location, userEmail, userPhoto, notes } = food;
+  const {user} = useContext(AuthContext);
 
   const {
     register,
@@ -17,6 +20,14 @@ const FoodDetails = () => {
   const onSubmit = (updatedFood, event) =>{
     event.preventDefault();
     updatedFood.status="Requested";
+
+    let d = new Date(Date.now());
+    let year = d.getFullYear();
+    let month = (d.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+    let day = d.getDate().toString().padStart(2, '0');
+    let formattedDate = `${year}-${month}-${day}`;
+    updatedFood.requestDate = formattedDate;
+    updatedFood.requester = user.email;
     console.log(updatedFood);
 
     fetch(`http://localhost:5000/food/${_id}`, {
