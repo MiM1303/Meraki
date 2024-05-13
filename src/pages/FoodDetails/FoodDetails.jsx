@@ -1,12 +1,54 @@
 import { useLoaderData } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
-// import "../FoodDetails/FoodDetails.css"
+import { useForm } from "react-hook-form"
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FoodDetails = () => {
   const food = useLoaderData();
-  const { name, photo, quantity, date, userName, location, userEmail, userPhoto, notes } = food;
+  const {_id, name, photo, quantity, date, userName, location, userEmail, userPhoto, notes } = food;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (updatedFood, event) =>{
+    event.preventDefault();
+    updatedFood.status="Requested";
+    console.log(updatedFood);
+
+    fetch(`http://localhost:5000/food/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(updatedFood)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.modifiedCount>0){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Food Requested Successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'Close'
+                  })
+                //   form.reset();
+            }
+            
+        })
+  }
+
+
+
   return (
     <div className="md:mt-16 lg:mt-20">
+        <Helmet>
+                <title>Meraki | Food Details ({name})</title>
+        </Helmet>
         <h2 className="text-center mb-10 text-5xl font-semibold text-[#EBB22F]">Details for food: {name}</h2>
       <div
         className="hero font-teachers"
@@ -28,13 +70,18 @@ const FoodDetails = () => {
             <button onClick={()=>document.getElementById('my_modal_1').showModal()} className="btn lg:mb-6 bg-[#cb946a] md:text-lg lg:text-lg button-styles border-[#60564C]">Request</button>
 
             {/* REQUEST MODAL */}
-            <dialog id="my_modal_1" className="modal ">
+            <dialog id="my_modal_1" className="modal z-20">
+            
                 <div className="modal-box">
+                    <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn btn-lg btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
                     <h3 className="font-bold lg:mt-10 lg:text-3xl text-[#9c6637]">Request for: {name}</h3>
-                    <p className="py-4 text-[#9c6637] ">Press the request button to request the food</p>
+                    <p className="py-4 text-[#9c6637] text-xl">Press the request button to request the food</p>
 
             {/* FOOD INFORMATION */}
-            <form className="font-teachers text-[#9c6637] mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 text-2xl">
+            <form onSubmit={handleSubmit(onSubmit)} className="font-teachers text-[#9c6637] mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 text-2xl">
                     <div className="w-full">
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                             Photo URL:
@@ -76,7 +123,7 @@ const FoodDetails = () => {
                 <div className="">
                     <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                         Additional Notes:
-                        <input type="text" className="grow p-1" defaultValue={notes} placeholder="Additional notes about the food?" disabled/>
+                        <input type="text" className="grow p-1" defaultValue={notes} placeholder="Additional notes about the food?"  {...register("notes", { required: false })}/>
                     </label>
                 </div>
                 <div className="flex flex-col gap-2 text-base md:text-xl">
@@ -90,7 +137,7 @@ const FoodDetails = () => {
                     </div>
                 </div>
 
-                <div className="form-control mt-6">
+                <div method="dialog" className="form-control modal-action mt-6">
                     <button className="btn bg-[#cb946a] button-styles text-base font-bold lg:text-xl  pb-10 pt-4 flex items-center justify-center">
                         Request
                     </button>
@@ -99,12 +146,12 @@ const FoodDetails = () => {
                     
                     
                     
-                <div className="modal-action ">
+                {/* <div className="modal-action ">
                     <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
+                        
                         <button className="btn">Close</button>
                     </form>
-                    </div>
+                </div> */}
                 </div>
             </dialog>
           </div>
