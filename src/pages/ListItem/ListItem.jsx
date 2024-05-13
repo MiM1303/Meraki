@@ -1,7 +1,7 @@
 
 
-const ListItem = ({food}) => {
-    const {name, photo, quantity, date, status, location} = food
+const ListItem = ({food, handleDelete}) => {
+    const {_id, name, photo, quantity, date, status, location} = food
     return (
         <tr>
             {/* image */}
@@ -26,7 +26,7 @@ const ListItem = ({food}) => {
             </th>
             <th>
             <button 
-            // onClick={()=>handleDelete(_id)} 
+            onClick={()=>handleDelete(_id)} 
             className="btn btn-ghost btn-xs text-lg text-red-600">Delete</button>
             </th>
         </tr>

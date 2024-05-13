@@ -5,6 +5,7 @@ import "../MyFoods/MyFoods.css"
 import { Helmet } from "react-helmet-async";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import Swal from 'sweetalert2'
 
 
 const MyFoods = () => {
@@ -18,6 +19,39 @@ const MyFoods = () => {
             .then(res=>res.json())
             .then(data=>setMyFoods(data))
     },[user])
+
+    const handleDelete = _id =>{
+        console.log(_id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          })
+          .then((result)=>{
+            if(result.isConfirmed){
+                fetch(`http://localhost:5000/food/${_id}`, {
+                    method: "DELETE",
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data);
+                    if(data.deletedCount>0)
+                    {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "The food has been deleted!",
+                            icon: "success"
+                          });
+                        setMyFoods(myFoods.filter(fd=>fd._id!==_id)); 
+                    }
+                })
+            }
+          })
+    }
     return (
         <div>
             <Helmet>
@@ -50,7 +84,8 @@ const MyFoods = () => {
                             key={food._id}
                             food={food}
                             myFoods={myFoods}
-                            setMyFoods={setMyFoods}></ListItem>)
+                            setMyFoods={setMyFoods}
+                            handleDelete={handleDelete}></ListItem>)
                     }
 
                     </tbody>                    
