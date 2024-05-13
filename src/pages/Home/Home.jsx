@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Banner from "./Banner";
 import { useLoaderData } from "react-router-dom";
 import FoodCard from "../FoodCard/FoodCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const foods = useLoaderData();
@@ -22,9 +23,10 @@ const Home = () => {
                         key={food._id}
                         food={food}></FoodCard>)
                 }
-            
             </div>
-            
+            <Link to={`/available-foods`} className="flex justify-center mt-10" >
+              <button className="btn  bg-[#cb946a] text-sm lg:text-base button-styles">Show All</button>
+            </Link>
         </div>
     );
 };
