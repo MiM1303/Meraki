@@ -1,7 +1,8 @@
 import { IoLocationSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
-  const { photo, name, userName, userPhoto, date, quantity, location, notes } = food;
+  const { _id, photo, name, userName, userPhoto, date, quantity, location, notes } = food;
   return (
     <div>
       <div className=" card bg-base-100 shadow-xl">
@@ -27,7 +28,9 @@ const FoodCard = ({ food }) => {
             <p className="text-base md:text-lg lg:text-xl "><span className="font-semibold">Expiry Date:</span> {date}</p>
             <p className="text-base md:text-lg lg:text-xl "><span className="font-semibold">Notes:</span> {notes}</p>
           <div className="card-actions justify-end mt-8">
-            <button className="btn bg-[#cb946a] text-sm lg:text-base button-styles">View Details</button>
+            <Link to={`/food/${_id}`}>
+              <button className="btn bg-[#cb946a] text-sm lg:text-base button-styles">View Details</button>
+            </Link>
           </div>
         </div>
       </div>
