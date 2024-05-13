@@ -20,6 +20,8 @@ const MyFoods = () => {
             .then(data=>setMyFoods(data))
     },[user])
 
+    
+
     const handleDelete = _id =>{
         console.log(_id)
         Swal.fire({
@@ -91,6 +93,7 @@ const MyFoods = () => {
                     </tbody>                    
                 </table>
             </div>
+            
         </div>
     );
 };
