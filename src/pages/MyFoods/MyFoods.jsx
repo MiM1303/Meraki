@@ -15,7 +15,7 @@ const MyFoods = () => {
     const userEmail = user.email;
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/my-foods/${userEmail}`)
+        fetch(`http://localhost:5000/my-foods/${userEmail}`, {credentials: 'include'})
             .then(res=>res.json())
             .then(data=>setMyFoods(data))
     },[user])

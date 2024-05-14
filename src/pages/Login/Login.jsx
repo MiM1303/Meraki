@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import LoginAnimation from '../Login/login.json'
 import Swal from "sweetalert2";
+import axios from 'axios';
 
 const Login = () => {
 
@@ -49,6 +50,8 @@ const Login = () => {
     // GOOGLE LOGIN
     const googleUserLogin = () =>{
         googleLogin()
+        // const {data} = await axios.post(`http://localhost:5000/jwt`, {email: result?.user?.email})
+        // console.log(data)
         .then(result=>{
             console.log(result.user)
             Swal.fire({

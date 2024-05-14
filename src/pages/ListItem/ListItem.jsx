@@ -71,8 +71,9 @@ const ListItem = ({food, handleDelete}) => {
 
 
             {/* UPDATE MODAL */}
-            <dialog id="my_modal_1" className="modal z-20">
             
+                <dialog id="my_modal_1" className="modal z-20">
+                
                 <div className="modal-box">
                     <form method="dialog">
                     {/* if there is a button in form, it will close the modal */}
@@ -81,15 +82,15 @@ const ListItem = ({food, handleDelete}) => {
                     <h3 className="font-bold lg:mt-10 lg:text-3xl text-center text-[#9c6637]">Updating : {name}</h3>
                     <p className="py-4 text-[#9c6637] text-center text-xl">Press the update button to update food information</p>
 
-            {/* FOOD INFORMATION */}
-            <form onSubmit={handleSubmit(onSubmit)} className="font-teachers text-[#9c6637] mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 text-2xl">
+                {/* FOOD INFORMATION */}
+                <form onSubmit={handleSubmit(onSubmit)} className="font-teachers text-[#9c6637] mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 text-2xl">
                     <div className="w-full">
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                             Photo URL:
                             <input type="url" className="grow p-1" placeholder="URL for the image of the food" defaultValue={photo} {...register("photo", { required: true })}/>
                         </label>
                     </div>                
-                      {/* item 1 */}
+                    {/* item 1 */}
                     <div className="w-full">
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                             Food Name:
@@ -106,7 +107,7 @@ const ListItem = ({food, handleDelete}) => {
                 
                 {/* row-2 */}
                 
-                      {/* item 1 */}
+                    {/* item 1 */}
                     <div className="w-full">
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                             Location:
@@ -146,6 +147,7 @@ const ListItem = ({food, handleDelete}) => {
             </form>
             </div>
             </dialog>
+
         </tr>
     );
 };

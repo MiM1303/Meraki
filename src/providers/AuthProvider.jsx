@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from '../firebase/firebase.config';
+import axios from "axios";
 
 export const AuthContext  = createContext();
 
@@ -33,10 +34,48 @@ const AuthProvider = ({children}) => {
     }
 
     // SIGNOUT
+    // useEffect(()=>{
+    //     const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+            
+    //         setUser(currentUser);
+    //         const userEmail = currentUser?.email || user.email;
+    //         const loggedUser = {email: userEmail};
+            
+    //         console.log('current user', currentUser)
+    //         setLoading(false);
+            
+    //         // if user exists then issue a token
+    //         if(currentUser){
+    //             axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials: true})
+    //             .then(res => {
+    //                 console.log('token response', res.data);
+    //             })
+    //         }
+    //         else{
+    //             axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
+    //             .then(res => {
+    //                 console.log(res.data)
+    //             })
+    //         }
+    //     })
+    //     return ()=> unsubscribe();
+    // },[])
+
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+            const Email = currentUser?.email || user?.email;
+            const loggedMail = {email: Email};
             setUser(currentUser);
             setLoading(false);
+
+            if(currentUser){
+                axios.post("http://localhost:5000/jwt",loggedMail, {withCredentials: true})
+                .then(res=>console.log(res.data))
+            }
+            else{
+                axios.post("http://localhost:5000/logout",loggedMail, {withCredentials: true})
+                .then(res=>console.log(res.data))
+            }
         })
         return ()=> unsubscribe();
     },[])

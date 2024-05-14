@@ -11,7 +11,7 @@ const RequestedFoods = () => {
     console.log(userEmail);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/requested-foods/${userEmail}`)
+        fetch(`http://localhost:5000/requested-foods/${userEmail}`, {credentials: 'include'})
             .then(res=>res.json())
             .then(data=>setMyFoods(data))
     },[user])
