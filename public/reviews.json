@@ -1,0 +1,44 @@
+[
+    {
+      "id":1,
+      "name": "Emma Wilson",
+      "user_img_url": "https://example.com/user1.jpg",
+      "review": "I recently donated surplus food through the platform, and it was a rewarding experience. Knowing that I could help someone in need made me feel grateful.",
+      "rating": 5
+    },
+    {
+      "id":2,
+      "name": "James Thompson",
+      "user_img_url": "https://example.com/user2.jpg",
+      "review": "As a recipient of donated food, I'm incredibly thankful for the support provided through this platform. It made a difference in my life when I needed it most.",
+      "rating": 4.5
+    },
+    {
+      "id":3,
+      "name": "Lily Garcia",
+      "user_img_url": "https://example.com/user3.jpg",
+      "review": "Donating surplus food through the platform was a simple and meaningful way to give back to the community. I'll definitely do it again!",
+      "rating": 5
+    },
+    {
+      "id":4,
+      "name": "Michael Clark",
+      "user_img_url": "https://example.com/user4.jpg",
+      "review": "Receiving donated food was a blessing during a difficult time. I'm grateful to the generous donors and the platform for making it possible.",
+      "rating": 4.8
+    },
+    {
+      "id":5,
+      "name": "Grace Baker",
+      "user_img_url": "https://example.com/user5.jpg",
+      "review": "I recently volunteered to deliver surplus food to those in need through the platform. It was a humbling experience, and I'm glad I could contribute.",
+      "rating": 4.7
+    },
+    {
+      "id":6,
+      "name": "Daniel Mitchell",
+      "user_img_url": "https://example.com/user6.jpg",
+      "review": "As someone who has received donated food, I want to express my gratitude to the donors and the platform. Your support means more than words can express.",
+      "rating": 4.9
+    }
+  ]
