@@ -25,10 +25,10 @@ const Reviews = () => {
             {/* SMALL DEVICE */}
             <div className="h-[450px] carousel carousel-vertical rounded-box md:hidden lg:hidden">
                 {
-                    reviews.map(rev=> <div key={rev.id} className="carousel-item w-[200px] h-full rounded-box flex flex-col gap-4 text-center p-10 bg-gradient-to-b from-[#e2f0ca] to-[#e2edfa]"> 
-                    <FaUserCircle className="mx-auto text-5xl text-[#CCC3AA]"></FaUserCircle>
-                    <h2 className="text-[#CCC3AA] text-2xl font-semibold ">{rev.name}</h2>
-                    <p className="text-[#CCC3AA] text-xl leading-relaxed"><span className="text-2xl font-bold">"</span>{rev.review}<span className="text-2xl font-bold">"</span></p> </div> )
+                    reviews.map(rev=> <div key={rev.id} className="carousel-item w-[200px] h-full rounded-box flex flex-col gap-4 text-center p-10 bg-gradient-to-b from-[#F5EFD7] to-[#FCE9DA]"> 
+                    <FaUserCircle className="mx-auto text-5xl text-[#69551c]"></FaUserCircle>
+                    <h2 className="text-[#69551c] text-2xl font-semibold ">{rev.name}</h2>
+                    <p className="text-[#69551c] text-xl leading-relaxed"><span className="text-2xl font-bold">"</span>{rev.review}<span className="text-2xl font-bold">"</span></p> </div> )
                 }
             </div>               
         </div>

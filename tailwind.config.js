@@ -12,6 +12,9 @@ export default {
         shadows: `"Shadows Into Light", cursive`,
         playpen: `"Playpen Sans", cursive`,
         teachers: `"Teachers", sans-serif`
+      },
+      colors: {
+        'regal-blue': '#243c5a',
       }
     },
   },
