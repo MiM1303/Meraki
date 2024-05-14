@@ -7,6 +7,9 @@ import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa6";
 // import register from "../../../public/register.png"
 import "../../App.css"
 
+import Lottie from 'lottie-react';
+import RegisterAnimation from "../Register/register.json"
+
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -63,17 +66,13 @@ const Register = () => {
 
             {/* REGISTRATION FORM */}
             <div className="flex items-center justify-center">
-                {/* IMAGE */}
-                {/* <div>
-                    <img className="h-2/3" src='../../../public/register.png' alt="" />
-                </div> */}
-                {/* FORM */}
+                
                 <div className="hero mt-40 mb-32">
                     <div className="hero-content flex-col  md:w-full lg:w-[800px] h-[600px]">
                         <div className="text-center">
                             <h1 className="text-5xl font-bold mb-3">Register now!</h1>
                         </div>
-                        <div className="card shrink-0 w-full shadow-2xl bg-base-100">
+                        <div className="card shrink-0 w-3/4 shadow-2xl bg-[#fbece0]">
                             <form onSubmit={handleSubmit(onSubmit)} className="card-body p-6">
                                 <div className="form-control mb-3">
                                     <label className="label">
@@ -120,6 +119,9 @@ const Register = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <Lottie animationData={RegisterAnimation} loop={true} />
                 </div>
             </div>
         </HelmetProvider>
