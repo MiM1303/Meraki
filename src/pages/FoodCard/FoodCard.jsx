@@ -1,8 +1,14 @@
+import { useContext } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Navigate, useLocation  } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
   const { _id, photo, name, userName, userPhoto, date, quantity, location, notes, requestDate } = food;
+  const {user} = useContext(AuthContext);
+  const currentLocation = useLocation();
+  console.log(currentLocation);
   return (
     <div>
       <div className=" card bg-base-100 shadow-xl">
@@ -29,9 +35,16 @@ const FoodCard = ({ food }) => {
             <p className="text-base md:text-lg lg:text-xl "><span className="font-semibold">Notes:</span> {notes}</p>
             {requestDate? <p className="text-base md:text-lg lg:text-xl "><span className="font-semibold">Requested Date:</span> {date}</p>:<p></p>}
           <div className="card-actions justify-end mt-8">
-            <Link to={`/food/${_id}`}>
-              <button className="btn bg-[#cb946a] text-sm lg:text-base button-styles">View Details</button>
+            {
+              user? 
+              <Link to={`/food/${_id}`}>
+                <button className="btn bg-[#cb946a] text-sm lg:text-base button-styles">View Details</button>
+              </Link>
+            :
+            <Link state={`/food/${_id}`} to="/login">
+                <button className="btn bg-[#cb946a] text-sm lg:text-base button-styles">View Details</button>
             </Link>
+            }
           </div>
         </div>
       </div>

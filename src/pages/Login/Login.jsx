@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import LoginAnimation from '../Login/login.json'
+import Swal from "sweetalert2";
 
 const Login = () => {
 
@@ -23,20 +24,52 @@ const Login = () => {
         const password = data.password;
         console.log(email, password)
         login(email, password)
-        .then(()=>{
-            toast.success("Successful");
+        .then((result)=>{
+            Swal.fire({
+                title: 'Success!',
+                text: 'Logged in successfully!!',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+            console.log(result.user);
             navigate(location?.state ? location.state : '/')
         })
         .catch(error=>{
-            toast.error("Your email or password didn't matched!");
+            console.error(error);
+            Swal.fire({
+                            title: 'Error!',
+                            text: 'Email and Password did not match! Please try again!!',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                          })
         })
+        
     }
 
     // GOOGLE LOGIN
     const googleUserLogin = () =>{
         googleLogin()
-        .then(()=>{navigate(location?.state ? location.state : '/')})
-        .catch((error)=>{toast.error("Please Try Again!");})
+        .then(result=>{
+            console.log(result.user)
+            Swal.fire({
+                title: 'Success!',
+                text: 'Logged in successfully!!',
+                icon: 'success',
+                confirmButtonText: 'Close'
+              })
+              navigate(location?.state ? location.state : '/');
+        })
+        .catch(error=>{
+            console.error(error);
+            Swal.fire({
+                            title: 'Error!',
+                            text: 'Email and Password did not match! Please try again!!',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                          })
+        })
+
+        
     }
 
     return (
