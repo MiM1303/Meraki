@@ -1,29 +1,13 @@
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import FoodCard from "../FoodCard/FoodCard";
 import { Helmet } from "react-helmet-async";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
-const AvailableFoods = ({foods}) => {
-    const allfood = useLoaderData();
-    // const [availFood, setAvailFood] = ([allfood]);
-    console.log(allfood);
-    const [sort, setSort] = useState('');
-    const [searchText, setSearchText] = useState('');
-
-    // useEffect(()=>{
-    //     fetch(`http://localhost:5000/available-foods/sorted/${sort}`)
-    //         .then(res=>res.json())
-    //         .then(data=>setAvailFood(data))
-    // },[])
-
-    // const handleSearch = e =>{
-    //     e.preventDefault();
-    //     const text = e.target.search.value;
-    //     setSearchText(text);
-        
-
-    // }
+// const AvailableFoods = ({foods}) => {
+const AvailableFoods = () => {
+    
     
     return (
         <div>
@@ -69,7 +53,7 @@ const AvailableFoods = ({foods}) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 mt-16">
                 {
-                    allfood.map(food=><FoodCard 
+                    allFood.map(food=><FoodCard 
                         key={food._id}
                         food={food}></FoodCard>)
                 }
