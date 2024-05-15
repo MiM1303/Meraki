@@ -4,7 +4,7 @@ import backgroundImg from "../Shared/footer-bg.png"
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 lg:py-20 lg:px-64 bg-[#F5EFD7] text-base-content">
+      <footer className="footer p-10 mt-8 md:mt-14 lg:mt-20 lg:py-20 lg:px-64 bg-[#F5EFD7] text-base-content">
         <aside>
           <img src="/public/meraki-logo.png" className="w-20" alt="" />
           <p className="font-bold text-2xl ">Meraki</p>

@@ -27,7 +27,7 @@ const Home = () => {
             <p className=" text-center mt-5 lg:text-xl">Have some extra food you would like to give away? Fill out the details below to help someone in need can!</p>
             <div onClick={()=>setLayout(!layout)} className=" text-[#b6723e] mt-10 shadow-xl w-fit p-2 bg-[#fbece0]">
                                         {
-                                            layout ? <BsFillGrid3X2GapFill className="text-3xl"/> : <BsGridFill className="text-3xl" />
+                                            layout ? <BsFillGrid3X2GapFill className="text-4xl"/> : <BsGridFill className="text-4xl" />
                                         }
                                     </div>
                                     

@@ -39,7 +39,7 @@ const AvailableFoods = () => {
 
             <div className="flex gap-10 mt-10 ml-20 justify-center">
                 {/* Search */}
-                <div className="w-1/4 flex flex-row">
+                <div className="w-1/4 flex flex-row gap-5">
                     {/* <form onSubmit={handleSearch}> */}
                         <div className="form-control">
                             <label className="input input-bordered flex items-center gap-2">
@@ -51,7 +51,7 @@ const AvailableFoods = () => {
                             </label>
                         </div>
 
-                        <div className="form-control mt-6">
+                        <div className="form-control">
                             <Link to={`/available-foods/search/${searchText}`}><button className="btn bg-[#cb946a] button-styles  text-lg text-white">search</button></Link>
                         </div>
                     {/* </form> */}
@@ -63,8 +63,8 @@ const AvailableFoods = () => {
                                 setSort(e.target.value)
                             }} 
                     value={sort} name="sort" id="sort" className="select select-bordered w-full max-w-xs">
-                        <option selected value='asc' >Sort By Expiry Date</option>
-                        <option value='asc'>Ascending</option>
+                        {/* <option selected  disabled >Sort By Expiry Date</option> */}
+                        <option  value='asc'>Ascending</option>
                         <option value='dsc'>Descending</option>
                     </select>
                     <Link to={`/available-foods/sorted/${sort}`}><button className="btn bg-[#cb946a] text-sm lg:text-base button-styles">Sort</button></Link>

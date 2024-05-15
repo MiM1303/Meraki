@@ -56,7 +56,7 @@ const Navbar = () => {
             </ul>
           </div>
             <div className="">
-                <img className=" md:w-48 rounded-full" src="https://i.ibb.co/tsYWvtL/meraki-nav-logo.png" alt="" />
+                <Link to="/"><img className=" md:w-48 rounded-full" src="https://i.ibb.co/tsYWvtL/meraki-nav-logo.png" alt="" /></Link>
             </div>
           
         </div>
