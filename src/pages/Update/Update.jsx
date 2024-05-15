@@ -28,7 +28,7 @@ const Update = () => {
         updatedFood.status = status;
 
         //send a data to the server
-        fetch(`http://localhost:5000/my-foods/update/${_id}`, {
+        fetch(`https://meraki-server.vercel.app/my-foods/update/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

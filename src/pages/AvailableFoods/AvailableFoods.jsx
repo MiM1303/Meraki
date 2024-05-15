@@ -1,13 +1,33 @@
-// import { useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import FoodCard from "../FoodCard/FoodCard";
 import { Helmet } from "react-helmet-async";
 import {  useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 
 // const AvailableFoods = ({foods}) => {
 const AvailableFoods = () => {
-    
+    const allFood = useLoaderData();
+    // console.log(allfood);
+    const [sort, setSort] = useState('');
+    const [searchText, setSearchText] = useState('');
+
+    // const {isPending, isError, error, data: allFood} = useQuery({
+    //     queryKey: ['availableFoods'],
+    //     queryFn: async() =>{
+    //         const res = await fetch('https://meraki-server.vercel.app/available-foods')
+    //         return res.json();
+    //     }
+    // })
+
+    // if(isPending)
+    //     {
+    //         return <span className="text-center mx-auto loading loading-dots loading-lg"></span>
+    //     }
+    // if(isError)
+    //     {
+    //         return <p>{error.message}</p>
+    //     }
     
     return (
         <div>

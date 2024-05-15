@@ -1,8 +1,20 @@
-# React + Vite
+Assignment_category_0007
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website Name: Meraki
+Website Live Link: https://meraki-4207e.web.app/
 
-Currently, two official plugins are available:
+Features of website-
+* Home page consisting of an attractive banner with animation using lottie react
+* Featured food section showing food donated in highest quantity
+* A layout changing button to toggle from 3 column layout and 2 column layout
+* Users can donate food by filling up the form in Add A Food page 
+* Manage my foods page to see, update and delete previously donated foods
+* Users can see their requested food from my requested foods
+* Sweet Alerts and Toasts showing success and errors appropriately
+* A review carousel in home showing user reviews
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+NPM packages for enhanced functionality - 
+* Lottie-React: used to add several attractive animations in the website like login, register, error page and banner section
+* React Hook Form: used to handle form information smoothly
+

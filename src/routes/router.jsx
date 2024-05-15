@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/food')
+                loader: () => fetch('https://meraki-server.vercel.app/food')
             },
             {
                 path: '/register',
@@ -38,22 +38,22 @@ const router = createBrowserRouter([
             {
                 path: '/available-foods',
                 element: <AvailableFoods></AvailableFoods>,
-                // loader: () => fetch('http://localhost:5000/available-foods')
+                loader: () => fetch('https://meraki-server.vercel.app/available-foods')
             },
             {
                 path: `/available-foods/sorted/:sort`,
                 element: <AvailableFoods></AvailableFoods>,
-                loader: ({params}) => fetch(`http://localhost:5000/available-foods/sorted/${params.sort}`)
+                loader: ({params}) => fetch(`https://meraki-server.vercel.app/available-foods/sorted/${params.sort}`)
             },
             {
                 path: `/available-foods/search/:searchText`,
                 element: <AvailableFoods></AvailableFoods>,
-                loader: ({params}) => fetch(`http://localhost:5000/available-foods/search/${params.searchText}`)
+                loader: ({params}) => fetch(`https://meraki-server.vercel.app/available-foods/search/${params.searchText}`)
             },
             {
                 path: "/food/:id",
                 element: <FoodDetails></FoodDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
+                loader: ({params}) => fetch(`https://meraki-server.vercel.app/food/${params.id}`)
             },
             {
                 path: "/requested-foods",
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
             {
                 path: "/my-foods/update/:id",
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/my-foods/update/${params.id}`)
+                loader: ({params}) => fetch(`https://meraki-server.vercel.app/my-foods/update/${params.id}`)
             },
             
             

@@ -26,7 +26,7 @@ const AddFood = () => {
         food.quantity = parseInt(food.quantity);
 
         //send food data to server
-        fetch('http://localhost:5000/add-food', {
+        fetch('https://meraki-server.vercel.app/add-food', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

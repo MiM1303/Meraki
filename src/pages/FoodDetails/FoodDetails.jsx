@@ -11,6 +11,8 @@ const FoodDetails = () => {
   const {_id, name, photo, quantity, date, userName, location, userEmail, userPhoto, notes } = food;
   const {user} = useContext(AuthContext);
 
+  
+
   const {
     register,
     handleSubmit,
@@ -30,7 +32,7 @@ const FoodDetails = () => {
     updatedFood.requester = user.email;
     console.log(updatedFood);
 
-    fetch(`http://localhost:5000/food/${_id}`, {
+    fetch(`https://meraki-server.vercel.app/food/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

@@ -50,7 +50,7 @@ const Login = () => {
     // GOOGLE LOGIN
     const googleUserLogin = () =>{
         googleLogin()
-        // const {data} = await axios.post(`http://localhost:5000/jwt`, {email: result?.user?.email})
+        // const {data} = await axios.post(`https://meraki-server.vercel.app/jwt`, {email: result?.user?.email})
         // console.log(data)
         .then(result=>{
             console.log(result.user)

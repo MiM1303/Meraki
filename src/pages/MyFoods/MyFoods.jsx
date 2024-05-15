@@ -15,7 +15,7 @@ const MyFoods = () => {
     const userEmail = user.email;
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/my-foods/${userEmail}`, {credentials: 'include'})
+        fetch(`https://meraki-server.vercel.app/my-foods/${userEmail}`, {credentials: 'include'})
             .then(res=>res.json())
             .then(data=>setMyFoods(data))
     },[user])
@@ -35,7 +35,7 @@ const MyFoods = () => {
           })
           .then((result)=>{
             if(result.isConfirmed){
-                fetch(`http://localhost:5000/food/${_id}`, {
+                fetch(`https://meraki-server.vercel.app/food/${_id}`, {
                     method: "DELETE",
                 })
                 .then(res=>res.json())
