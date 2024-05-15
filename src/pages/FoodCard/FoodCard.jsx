@@ -13,7 +13,7 @@ const FoodCard = ({ food }) => {
     <div>
       <div className=" card bg-base-100 shadow-xl">
 
-          <figure className="relative bg-gray-900">
+          <figure className="relative bg-gray-900 h-[288px] md:h-[340px] lg:h-[464px]">
             <img className="hover:scale-110 " src={photo} alt="Shoes" />
             <div className="flex flex-col px-6 py-6 md:px-8 md:py-8 lg:py-10 lg:px-10 gap-2 absolute left-0 text-white bottom-0">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl">{name}</h2>

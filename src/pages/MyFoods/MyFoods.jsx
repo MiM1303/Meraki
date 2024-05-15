@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from 'sweetalert2'
+import { useQuery } from "@tanstack/react-query";
 
 
 const MyFoods = () => {
@@ -19,6 +20,24 @@ const MyFoods = () => {
             .then(res=>res.json())
             .then(data=>setMyFoods(data))
     },[user])
+
+    // const {isPending, isError, error, data:loadedMyFoods} = useQuery({
+    //     queryKey: ['loadedMyFoods'],
+    //     queryFn: async() =>{
+    //         const res = await fetch('https://meraki-server.vercel.app/available-foods', {withCredentials: true})
+    //         return res.json()
+    //     }
+    // })
+
+    // setMyFoods(loadedMyFoods);
+    // if(isPending)
+    //     {
+    //         return <span className="text-center mx-auto loading loading-dots loading-lg"></span>
+    //     }
+    // if(isError)
+    //     {
+    //         return <p>{error.message}</p>
+    //     }
 
     
 

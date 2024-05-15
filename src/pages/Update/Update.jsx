@@ -4,9 +4,11 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-
+import { useMutation } from "@tanstack/react-query";
+// import useAxiosSecure from '../hooks/useAxiosSecure'
 
 const Update = () => {
+    // const axiosSecure = useAxiosSecure()
     const food = useLoaderData();
     console.log(food.name);
     const {_id, name, photo, quantity, date, status, location, notes, userPhoto, userEmail, userName} = food
@@ -20,35 +22,58 @@ const Update = () => {
         formState: { errors },
       } = useForm();
 
+      const { mutateAsync } = useMutation({
+        mutationFn: async ({ updatedFood }) => {
+          const { data } = await fetch(`https://meraki-server.vercel.app/my-foods/update/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(updatedFood)
+            })
+          console.log(data)
+          return data
+        },
+        onSuccess: () => {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Food Updated Successfully.',
+            icon: 'success',
+            confirmButtonText: 'Close'
+          })
+          
+        },
+      })
 
-      const onSubmit = (updatedFood, event) =>{
+      const onSubmit = async (updatedFood, event) =>{
         event.preventDefault();
         console.log(updatedFood);
         updatedFood.quantity = parseInt(updatedFood.quantity);
         updatedFood.status = status;
 
         //send a data to the server
-        fetch(`https://meraki-server.vercel.app/my-foods/update/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(updatedFood)
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data);
-            if(data.modifiedCount>0){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Food Updated Successfully.',
-                    icon: 'success',
-                    confirmButtonText: 'Close'
-                  })
-                //   form.reset();
-            }
+        // fetch(`https://meraki-server.vercel.app/my-foods/update/${_id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'content-type': 'application/json',
+        //     },
+        //     body: JSON.stringify(updatedFood)
+        // })
+        // .then(res=>res.json())
+        // .then(data=>{
+        //     console.log(data);
+        //     if(data.modifiedCount>0){
+        //         Swal.fire({
+        //             title: 'Success!',
+        //             text: 'Food Updated Successfully.',
+        //             icon: 'success',
+        //             confirmButtonText: 'Close'
+        //           })
+        //         //   form.reset();
+        //     }
             
-        })
+        // })
+        await mutateAsync({ updatedFood })
         
     }
     return (

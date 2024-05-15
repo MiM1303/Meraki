@@ -4,7 +4,7 @@ import bannerAnimation from "./banner.json"
 const Banner = () => {
   return (
     <div className="mt-20">
-      <div className="hero h-[600px] bg-[linear-gradient(45deg,rgba(19,19,24,0.50),rgba(19,19,24,0.50)),url('https://i.ibb.co/vwFLLtK/banner1.jpg')] bg-right md:bg-right lg:bg-center bg-cover border border-transparent rounded-xl">
+      <div className="hero h-[600px] bg-[linear-gradient(45deg,rgba(19,19,24,0.50),rgba(19,19,24,0.50)),url('https://i.ibb.co/ccHFFX0/banner1-min.jpg')] bg-right md:bg-right lg:bg-center bg-cover border border-transparent rounded-xl">
         <div className="hero-overlay bg-opacity-0 border border-transparent rounded-xl"></div>
         <div className="hero-content text-center flex flex-col lg:flex-row items-center justify-center gap-4 md:gap-6 lg:gap-16 leading-loose text-neutral-content">
             {/* animation */}

@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('https://meraki-server.vercel.app/food')
+                // loader: () => fetch('https://meraki-server.vercel.app/food')
             },
             {
                 path: '/register',

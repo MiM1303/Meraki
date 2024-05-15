@@ -8,13 +8,30 @@ import Reviews from "./Reviews";
 import { BsGridFill } from "react-icons/bs";
 import { BsFillGrid3X2GapFill } from "react-icons/bs";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-    const foods = useLoaderData();
-    console.log(foods);
+    // const foods = useLoaderData();
+    // console.log(foods);
     const [layout, setLayout] = useState(true);
     // true -->3 col, false --> 2 col
     console.log(layout);
+
+    const {data:foods, isPending, refetch, isError, error} = useQuery({
+        queryKey: ['foods'],
+        queryFn: async () =>{
+            const res = await fetch('https://meraki-server.vercel.app/food');
+            return res.json();
+        }
+    })
+
+    if(isPending){
+        return <span className="loading loading-dots loading-lg"></span>
+    }
+    if(isError){
+        return <p>{error.message}</p>
+    }
+
     return (
         <div>
             <Helmet>
