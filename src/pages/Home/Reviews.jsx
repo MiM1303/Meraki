@@ -16,7 +16,7 @@ const Reviews = () => {
             <div className="lg:carousel md:carousel carousel-center w-full p-4 space-x-4 rounded-box hidden bg-[#EBB22F] ">
             {/* LARGE DEVICE */}
                 {
-                    reviews.map(rev=> <div key={rev.id} className="carousel-item md:w-[545px] lg:w-[568px] rounded-box flex flex-col gap-6 text-center p-20 bg-[linear-gradient(45deg,rgba(19,19,24,0.50),rgba(19,19,24,0.50)),url('https://i.ibb.co/F45H6vr/food-bg-1.jpg')] bg-right-bottom"> 
+                    reviews.map(rev=> <div key={rev.id} className="carousel-item md:w-[545px] lg:w-[568px] rounded-box flex flex-col gap-6 text-center p-20 bg-[linear-gradient(45deg,rgba(19,19,24,0.50),rgba(19,19,24,0.50)),url('https://i.ibb.co/V9z4RgS/food-bg-1-min.jpg')] bg-cover"> 
                     <FaUserCircle className="text-[#CCC3AA] mx-auto text-5xl"></FaUserCircle>
                     <h2 className="text-2xl font-semibold text-[#CCC3AA]">{rev.name}</h2>
                     <p className="text-[#CCC3AA] text-xl leading-relaxed"><span className="text-2xl font-bold ">"</span>{rev.review}<span className="text-2xl font-bold">"</span></p> </div> )
