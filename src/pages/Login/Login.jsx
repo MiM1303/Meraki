@@ -23,15 +23,27 @@ const Login = () => {
     const onSubmit = (data) => {
         const email = data.email;
         const password = data.password;
+        data.donationCount = 0;
         console.log(email, password)
         login(email, password)
         .then((result)=>{
-            Swal.fire({
-                title: 'Success!',
-                text: 'Logged in successfully!!',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-              })
+              // send donor/user data to donors collection
+              console.log(data);
+              fetch('https://meraki-server.vercel.app/donors', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                if(data.insertedId)
+                {
+                    toast.success("Successfully Registered!");
+                }
+            })
             console.log(result.user);
             navigate(location?.state ? location.state : '/')
         })

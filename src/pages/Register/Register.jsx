@@ -30,6 +30,9 @@ const Register = () => {
         const password = data.password;
         const name = data.name;
         const photoURL = data.photoURL;
+        
+        data.donationCount = 0; //initially users will have donated 0 food when registering
+
         if(passwordRegex.test(password)){
             createUser(email, password)
             .then(()=>{
@@ -40,8 +43,26 @@ const Register = () => {
                         photoURL: photoURL,
                         email: email
                     })
+
+                    // send donor/user data to donors collection
+                    fetch('https://meraki-server.vercel.app/donors', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(res=>res.json())
+                    .then(data=>{
+                        console.log(data);
+                        if(data.insertedId)
+                        {
+                            toast.success("Successfully Registered!");
+                        }
+                    })
+
                     // navigate(location?.state ? location.state : '/')
-                    toast.success("Successfully Registered!");
+                    
                 })
                 .catch(()=>{   
                     toast.error("Something went wrong!");

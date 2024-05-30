@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "./Banner";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import FoodCard from "../FoodCard/FoodCard";
 import { Link } from "react-router-dom";
 import Process from "./Process";
@@ -9,11 +9,13 @@ import { BsGridFill } from "react-icons/bs";
 import { BsFillGrid3X2GapFill } from "react-icons/bs";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import TopDonors from "./TopDonors";
 
 const Home = () => {
     // const foods = useLoaderData();
     // console.log(foods);
     const [layout, setLayout] = useState(true);
+
     // true -->3 col, false --> 2 col
     console.log(layout);
 
@@ -31,6 +33,8 @@ const Home = () => {
     if(isError){
         return <p>{error.message}</p>
     }
+
+    
 
     return (
         <div>
@@ -63,9 +67,16 @@ const Home = () => {
             <h2 className="border-b-4 w-fit mx-auto rounded-2xl p-4 border-[#EBB22F] text-center lg:text-4xl text-2xl mt-20 font-semibold text-[#442537]">How It Works!</h2>
             <p className="text-center mt-5 lg:text-xl">Find out the process below to help others and getting help, all the while maintaining sustainability!</p>
             <Process></Process>
+
+            {/* TOP DONORS SECTION */}
+            <h2 className="border-b-4 w-fit mx-auto rounded-2xl p-4 border-[#EBB22F] text-center lg:text-4xl text-2xl mt-20 font-semibold text-[#442537]">Top Donors!</h2>
+            <p className="text-center mt-5 lg:text-xl">See our top donors who have donated the most food items!</p>
+            <TopDonors></TopDonors>
             
+            {/* REVIEWS SECTION */}
             <h2 className="border-b-4 w-fit mx-auto rounded-2xl p-4 border-[#EBB22F] text-center lg:text-4xl text-2xl mt-20 font-semibold text-[#442537]">Reviews</h2>
-            <p className="text-center mt-5 lg:text-xl">Swipe to see some feedback from our users!</p>
+            <p className="text-center mt-5 lg:text-xl">Drop us a review to give your feedback! Swipe to see some feedback from our users!</p>
+            
             <Reviews></Reviews>
         </div>
     );

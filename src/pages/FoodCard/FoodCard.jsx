@@ -8,7 +8,7 @@ const FoodCard = ({ food }) => {
   const { _id, photo, name, userName, userPhoto, date, quantity, location, notes, requestDate } = food;
   const {user} = useContext(AuthContext);
   const currentLocation = useLocation();
-  console.log(currentLocation);
+  // console.log(currentLocation);
   return (
     <div>
       <div className=" card bg-base-100 shadow-xl">
