@@ -10,7 +10,7 @@
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone https://github.com/MiM1303/Meraki.git
     cd your-repo-name/client
     ```
 
